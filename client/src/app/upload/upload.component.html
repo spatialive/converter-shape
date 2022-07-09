@@ -1,0 +1,37 @@
+<p-toast position="center"></p-toast>
+<div class="login-body flex flex-column align-items-center justify-content-center">
+    <div class="grid">
+        <div class="col-12">
+            <div class="login-panel p-5 pt-6 p-fluid flex flex-column justify-content-center">
+                <h4 class="font-bold">SSEBop - Upload</h4>
+                <span class="mb-4 line-height-3">
+                            Upload de arquivo espacial com os pontos para processamento em lote.
+                        </span>
+                <div class="grid">
+                    <p-fileUpload chooseLabel="Escolha o arquivo "
+                                  [auto]="true"
+                                  [showUploadButton]="true"
+                                  [cancelIcon]="'pi-trash'"
+                                  accept=".gpkg,.zip,.kml"
+                                  [customUpload]="true"
+                                  (uploadHandler)="onUploadPoints($event)"
+                                  (onRemove)="clearMap()"
+                                  (onClear)="clearMap()"
+                    ></p-fileUpload>
+                </div>
+                <div class="grid mt-4">
+                    <div class="col-6" *ngIf="upload.geojson != ''">
+                        <h4>GEOJSON</h4>
+                        <textarea  id="geojson" type="text" rows="10" pInputTextarea [(ngModel)]="upload.geojson" [disabled]="true"></textarea>
+                        <button pButton pRipple type="button" label="Copiar GEOJSON para área de tranferência" [cdkCopyToClipboard]="upload.geojson" class="p-button-raised p-button-secondary p-button-text"></button>
+                    </div>
+                    <div class="col-6"  *ngIf="upload.wkt.length > 0">
+                        <h4>WKT</h4>
+                        <textarea id="wkt" type="text" rows="10" pInputTextarea [(ngModel)]="upload.wkt" [disabled]="true"></textarea>
+                        <button [cdkCopyToClipboard]="upload.wkt.toString()" pButton pRipple type="button" label="Copiar WKT para área de tranferência" class="p-button-raised p-button-secondary p-button-text"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

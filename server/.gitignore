@@ -10,6 +10,7 @@ __pycache__/
 
 .vscode/
 .idea/
+../.vscode
 
 # C extensions
 *.so
