@@ -11,9 +11,8 @@ SHELL ["/bin/bash", "-c"]
 ENV URL_TO_APPLICATION_GITHUB="https://github.com/spatialive/converter-shape.git"
 ENV BRANCH="main"
 
-RUN apt-get update && apt-get install -y git curl && mkdir -p /APP && cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB} \
+RUN && asdasdq1 && apt-get update && apt-get install -y git curl && mkdir -p /APP && cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB} \
     && rm -rf /var/lib/apt/lists/* \
     && cd /APP/converter-shape/client && npm ci \
-    && ng build && asdasdq1
-
+    && ng build 
 CMD bash -c "cd /APP/converter-shape/server && ./start.sh"
