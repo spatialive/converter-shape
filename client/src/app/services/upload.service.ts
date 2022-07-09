@@ -33,7 +33,7 @@ export class UploadService {
         );
     }
     errorHandler(error: HttpErrorResponse) {
-        const errorMessage = `Código do erro: ${error.status} - Mensagem: ${JSON.stringify(error)}`;
+        const errorMessage = `Código do erro: ${error.status} - Mensagem: ${error.message}`;
         return throwError(errorMessage);
     }
 }
