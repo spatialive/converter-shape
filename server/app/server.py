@@ -24,8 +24,6 @@ class ORJSONResponse(JSONResponse):
 
 app = FastAPI(default_response_class=ORJSONResponse)
 
-app.mount('/', SPAStaticFiles(directory=path.abspath('../client/dist'), html=True))
-
 origins = [
     "https://convertershape.lapig.iesa.ufg.br",
     "http://localhost:4200",
@@ -40,12 +38,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 app.include_router(
     upload.router, 
     prefix='/api/upload', 
     tags=['Upload Files']
 )
 
+app.mount('/', SPAStaticFiles(directory=path.abspath('../client/dist'), html=True))
 
 
