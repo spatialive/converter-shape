@@ -1,7 +1,7 @@
 node {
 
     load "$JENKINS_HOME/.envvars"
-    def application_name= "converter_shape"
+    def application_name= "app_shape"
     
 
         stage('Checkout') {
@@ -27,7 +27,7 @@ node {
         stage('Building Image') {
             sh 'docker builder prune -f'
             try {
-                docker.build registryHOMOL + "/$application_name:$BUILD_NUMBER", "--build-arg  --no-cache -f Dockerfile ."
+                 dockerImage = docker.build registryhomol + "/$application_name:$BUILD_NUMBER"
             } catch (Exception e) {
                                     echo 'OCORREU ERRO!!' 
                                     currentBuild.result = 'FAILED'
