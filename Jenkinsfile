@@ -27,7 +27,7 @@ node {
         stage('Building Image') {
             sh 'docker builder prune -f'
             try {
-                 dockerImage = docker.build registryhomol + "/$application_name:$BUILD_NUMBER"
+                 dockerImage = docker.build registryhomol + "/$application_name:$BUILD_NUMBER", "--build-arg  --no-cache -f Dockerfile ."
             } catch (Exception e) {
                                     echo 'OCORREU ERRO!!' 
                                     currentBuild.result = 'FAILED'
