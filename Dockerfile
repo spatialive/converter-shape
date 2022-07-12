@@ -1,7 +1,7 @@
 ###############################################
 # Production Image
 ###############################################
-FROM registry.lapig.iesa.ufg.br/lapig-images-homol/converter-shape:base
+FROM registry.lapig.iesa.ufg.br/lapig-images-homol/app_converter_shape:base
 
 WORKDIR /APP
 
