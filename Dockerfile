@@ -10,8 +10,9 @@ SHELL ["/bin/bash", "-c"]
 # Clone app and npm install on server
 ENV URL_TO_APPLICATION_GITHUB="https://github.com/spatialive/converter-shape.git"
 ENV BRANCH="main"
-
-RUN apt-get update && apt-get install -y git curl && mkdir -p /APP && cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB} \
+    
+RUN if [ -d "/APP/converter-shape" ]; then rm -Rf /APP/converter-shape; fi \
+    && apt-get update && apt-get install -y git curl && mkdir -p /APP && cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB} \
     && rm -rf /var/lib/apt/lists/* \
     && cd /APP/converter-shape/client && npm ci \
     && ng build 
