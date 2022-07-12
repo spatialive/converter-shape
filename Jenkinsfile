@@ -1,7 +1,7 @@
 node {
 
     load "$JENKINS_HOME/.envvars"
-    def application_name= "converter-shape"
+    def application_name= "app_converter-shape"
     
 
         stage('Checkout') {
